@@ -429,7 +429,8 @@ namespace AngryLevelLoader
 
 			config = PluginConfigurator.Create("Angry Level Loader", PLUGIN_GUID);
 			config.postConfigChange += UpdateAllUI;
-			config.SetIconWithURL(Path.Combine(workingDir, "plugin-icon.png"));
+			// Silly #3, fixes the plugin config thumbnail - coatlessali
+			config.SetIconWithURL(Path.Combine("file://" + workingDir, "plugin-icon.png"));
 			newLevelToggle = new BoolField(config.rootPanel, "", "v_newLevelToggle", false);
 			newLevelToggle.hidden = true;
 			config.rootPanel.onPannelOpenEvent += (external) =>
@@ -448,7 +449,8 @@ namespace AngryLevelLoader
 			levelUpdateNotifier = new ConfigHeader(config.rootPanel, "<color=lime>Level updates available!</color>", 16);
 			levelUpdateNotifier.hidden = true;
 			OnlineLevelsManager.onlineLevelsPanel = new ConfigPanel(config.rootPanel, "Online Levels", "b_onlineLevels", ConfigPanel.PanelFieldType.StandardWithIcon);
-			OnlineLevelsManager.onlineLevelsPanel.SetIconWithURL(Path.Combine(workingDir, "online-icon.png"));
+			// Silly #4, fixes the online button - coatlessali
+			OnlineLevelsManager.onlineLevelsPanel.SetIconWithURL("file://" + Path.Combine(workingDir, "online-icon.png"));
 			OnlineLevelsManager.onlineLevelsPanel.onPannelOpenEvent += (e) =>
 			{
 				newLevelNotifier.hidden = true;

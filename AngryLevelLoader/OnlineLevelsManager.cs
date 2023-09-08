@@ -65,7 +65,8 @@ namespace AngryLevelLoader
 				return;
 			init = true;
 
-			UnityWebRequest spriteReq = UnityWebRequestTexture.GetTexture(Path.Combine(Plugin.workingDir, "loading-icon.png"));
+			// Silly #1, don't rember - coatlessali
+			UnityWebRequest spriteReq = UnityWebRequestTexture.GetTexture("file://" + Path.Combine(Plugin.workingDir, "loading-icon.png"));
 			var handle = spriteReq.SendWebRequest();
 			handle.completed += (e) =>
 			{

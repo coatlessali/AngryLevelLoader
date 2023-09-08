@@ -42,8 +42,8 @@ namespace AngryLevelLoader
 		{
 			if (_previewImage != null && !force)
 				return;
-
-			UnityWebRequest req = UnityWebRequestTexture.GetTexture(URL);
+			// Silly #1, fixes the thumbnails for the online manager - coatlessali
+			UnityWebRequest req = UnityWebRequestTexture.GetTexture("file://" + URL);
 			var handle = req.SendWebRequest();
 			handle.completed += (e) =>
 			{

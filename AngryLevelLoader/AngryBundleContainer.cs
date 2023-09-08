@@ -238,12 +238,14 @@ namespace AngryLevelLoader
 					Directory.CreateDirectory(pathToTempFolder);
 					zip.ExtractToDirectory(pathToTempFolder);
 
-					rootPanel.SetIconWithURL(Path.Combine(pathToTempFolder, "icon.png"));
+					// Silly #1, fixes the level thumbails after unzipping - coatlessali
+					rootPanel.SetIconWithURL(Path.Combine("file://" + pathToTempFolder, "icon.png"));
 				}
 				else
 				{
 					if (rootPanel.icon == null)
-						rootPanel.SetIconWithURL(Path.Combine(pathToTempFolder, "icon.png"));
+						// Silly #2, ditto but persistent - coatlessali
+						rootPanel.SetIconWithURL(Path.Combine("file://" + pathToTempFolder, "icon.png"));
 				}
 			}
 
